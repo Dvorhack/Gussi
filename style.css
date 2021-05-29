@@ -1,0 +1,167 @@
+html, body {
+ margin: 0;
+ padding: 0;
+ font-family: "Gill Sans", sans-serif;
+ }
+
+h1 {
+ font-size: 20px;
+ color: black; 
+ text-align: center;
+ }
+ @media screen and (min-width: 600px) {
+  h1 {
+    font-size: calc(20px + 20 * ((100vw - 600px) / 600));
+  }
+}
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 35px;
+  }
+}
+
+
+h2 {
+ font-size: 16px;
+ color: #808080;
+ text-align: center;
+ }
+ 
+ @media screen and (min-width: 600px) {
+  h2 {
+    font-size: calc(16px + 16 * ((100vw - 600px) / 600));
+  }
+}
+@media screen and (min-width: 1200px) {
+  h2 {
+    font-size: 32px;
+  }
+}
+ 
+p,ul,li,td {
+ color: black; 
+ }
+
+.Image {
+min-width:170px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:2%;
+  width: 25%;
+  height: 25%;
+  border-radius : 20px;
+  box-shadow: 0px 0px 25px #5AC5C2;
+  
+}
+label {
+	text-align:center;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input {
+	width: 22%;
+}
+  
+.Image2{
+	min-width:20px;
+	max-width:25px;
+	width: 5%;
+	height: auto;
+	
+}
+
+.Retour{
+	min-width:22px;
+	max-width:25px;
+	width: 5%;
+	height: auto;
+	margin-top:10%;
+	margin-left:10%;
+}
+
+.Vol,.Timer{
+    text-align: center;
+
+}
+.Encours{
+	
+	text-align: center;
+	font-size:10%;
+	
+}
+
+	
+	
+.Boutton{
+	min-width:25px;
+	text-align: center;
+	padding-right:10%;
+}
+
+.TailleButton{
+	min-width:25px;
+	max-width:30px;
+	width: 5%;
+	height: auto;
+	margin-left:10%;
+	margin-bottom:16%;
+	display:inline-flex;
+}
+
+
+.TailleButtonPause{
+	min-width:35px;
+	max-width:65px;
+	width: 9%;
+	height: auto;
+	margin-left:10%;
+	margin-bottom:15%;
+	}
+p span.gauche {
+	margin-top:0%;
+	margin-left:25%;
+	float: left;
+	font-size: 120%; 
+	color: #333333;
+}
+
+p span.droite {
+	margin-top:0%;
+	margin-right:25%;
+	float: right;
+	font-size: 120%; 
+	color: #333333;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      width: 150px;
+      -webkit-appearance: none;
+    }
+    
+}
+
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #5AC5C2;
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #9a905d;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #5AC5C2;
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #9a905d;
+}
+
+
+
+
+
+
+
+
