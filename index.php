@@ -27,9 +27,6 @@ if(isset($_GET['playPause'])){
 if(isset($_GET['next'])){
 
 	$cmd = "python3 /home/pi/site/command.py next";
-
-	
-
 	system($cmd);
 }
 if(isset($_GET['prev'])){
@@ -45,6 +42,12 @@ if(isset($_GET['vol'])){
 	//echo $cmd;
 	system($cmd);
 }
+if(isset($_GET['time'])){
+	$cmd = "python3 /home/pi/site/command.py 'time " . $_GET['time'] . "'";
+	//$_SESSION['time'] = $_GET['vol']*40;
+	//echo $cmd;
+	system($cmd);
+}
 ?>
 
 
@@ -53,7 +56,7 @@ if(isset($_GET['vol'])){
  
   	<head>
 		<metacharset="utf-8">
-		<title>Gussi-Controles</title>
+		<title>Gussi-Control</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<meta name="viewport" content="width=device-width"/>
 
@@ -64,15 +67,21 @@ if(isset($_GET['vol'])){
 		<br />
 		<img src="Images/LogoTigre.png" alt="Bonjour à tous je suis l'image" class="Image"/>
 		<?php 
-			$titre=explode("/",$file);
-			$tuile=explode(".",$titre[1]);
+		if(isset($file)){
+			
+			$tuile=explode(".",$file);
 			$phrase=preg_split("/(-|_)/",$tuile[0]);
+			$string = "";
 			for ($i = 0; $i< sizeof($phrase) ; $i++){
 				$string.=$phrase[$i]." ";
 				
 			}
 			echo "<div class='tuile' style='text-align:center;padding-top:20px;font-size:150%;'>$string</div>"; 
 			$_SESSION['titre_musique']=$string;
+		}else if(isset($_SESSION['titre_musique']))
+			echo "<div class='tuile' style='text-align:center;padding-top:20px;font-size:150%;'>".$_SESSION['titre_musique']."</div>";
+		else
+			echo "<div class='tuile' style='text-align:center;padding-top:20px;font-size:150%;'>Pas de musique en cours</div>";
 		?>
 
 		<p class="Vol">
@@ -83,7 +92,7 @@ if(isset($_GET['vol'])){
 		
 		<p class="Timer">
 		<img src="Images/white.jpg"  class="Image2"/>
-			<input class="custom-slider" type="range" value="50">
+			<input class="custom-slider" id="TimeSlide" type="range" value="50" onmouseup="modifTime()">
 			
 		</p>
 		
@@ -126,6 +135,15 @@ if(isset($_GET['vol'])){
 			var url = window.location.href.split("?")[0];    
 
 			url += '?vol=' + document.getElementById("VolSlide").value/40
+			
+			window.location.href = url;
+			
+		//	alert('volume ' + document.getElementById("VolSlide").value/10);
+		}
+		function modifTime(){
+			var url = window.location.href.split("?")[0];    
+
+			url += '?time=' + document.getElementById("TimeSlide").value
 			
 			window.location.href = url;
 			
