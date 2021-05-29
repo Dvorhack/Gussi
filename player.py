@@ -30,16 +30,25 @@ while 1:
     musiques = os.listdir(AUDIO_PATH)
     
     if buf[0] == 'quit':
-        if 'player' in locals():
-            player.quit()
+        if player in locals():
+            try:
+                player.quit()
+            except:
+                pass
     
     elif buf[0] == 'play':
         if 'player' in locals():
-            player.play()
+            try:
+                player.play_pause()
+            except:
+                pass
     
     elif buf[0] == 'pause':
         if 'player' in locals():
-            player.pause()
+            try:
+                player.play_pause()
+            except:
+                pass
     
     elif buf[0] == 'next':
         if 'player' in locals():
@@ -49,11 +58,25 @@ while 1:
     
     elif buf[0] == 'prev':
         if 'player' in locals():
-            player.previous()
+            try:
+                player.previous()
+            except:
+                pass
     
     elif buf[0] == 'vol':
         if 'player' in locals():
-            player.set_volume(float(buf[1]))
+            try:
+                player.set_volume(float(buf[1]))
+            except:
+                pass
+
+    elif buf[0] == 'time':
+        if 'player' in locals():
+            try:
+                temps = player.duration()
+                player.set_position(temps * float(buf[1])/100)
+            except:
+                pass
     
     elif buf[0] == 'new':
         if 'player' in locals():
