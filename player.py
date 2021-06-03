@@ -5,7 +5,7 @@ from pathlib import Path
 from time import sleep
 import socket
 import os, sys, random
-
+from gpiozero import LED, Button
 
 MAX_LENGTH = 4096
 AUDIO_PATH = "/home/pi/site/sounds/"
@@ -21,10 +21,35 @@ serversocket.listen()
 #player = OMXPlayer(AUDIO_PATH + os.listdir(AUDIO_PATH)[0], pause=True)
 
 
+led = LED(17)
+button = Button(23)
+
+"""while True:
+    if button.is_pressed:
+        led.on()
+    else:
+        led.off()"""
+
+def clicked():
+    led.on()
+    print("appuyé")
+    os.system("python3 /home/pi/site/command.py next")
+
+def released():
+    led.off()
+    print("relaché")
+
+
+button.when_pressed = clicked
+button.when_released = released
+
+
+
 while 1:
     
     #accept connections from outside
     (clientsocket, address) = serversocket.accept()
+    #print("clientaccepte")
 
     buf = clientsocket.recv(MAX_LENGTH).decode('utf-8').split(" ")
     musiques = os.listdir(AUDIO_PATH)
