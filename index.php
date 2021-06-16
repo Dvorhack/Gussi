@@ -86,7 +86,7 @@ if(isset($_GET['time'])){
 
 		<p class="Vol">
 			<img src="Images/Volume.png"  class="Image2"/>
-			<input class="custom-slider" id="VolSlide" type="range" value=<?php echo $_SESSION['vol'] ?> ontouchend="modifVol()" onmouseup="modifVol()">
+			<input class="custom-slider" id="VolSlide" type="range" value=<?php echo $_SESSION['vol'] ?>  onmouseup="modifVol()">
 			
 		</p>
 		
@@ -149,5 +149,20 @@ if(isset($_GET['time'])){
 			
 		//	alert('volume ' + document.getElementById("VolSlide").value/10);
 		}
+		document.getElementById("VolSlide").addEventListener('touchend', function(){
+			var url = window.location.href.split("?")[0];    
+
+			url += '?vol=' + document.getElementById("VolSlide").value/40
+			
+			window.location.href = url;
+		});
+
+		document.getElementById("TimeSlide").addEventListener('touchend', function(){
+			var url = window.location.href.split("?")[0];    
+
+			url += '?time=' + document.getElementById("TimeSlide").value
+			
+			window.location.href = url;
+		});
 	</script>
 </html>

@@ -22,7 +22,8 @@ serversocket.listen()
 
 
 led = LED(17)
-button = Button(23)
+btnNext = Button(23)
+btnPlayPause = Button(24)
 
 """while True:
     if button.is_pressed:
@@ -30,18 +31,17 @@ button = Button(23)
     else:
         led.off()"""
 
-def clicked():
-    led.on()
-    print("appuyé")
+def NextClicked():
     os.system("python3 /home/pi/site/command.py next")
 
-def released():
-    led.off()
-    print("relaché")
+def PlayPauseClicked():
+    os.system("python3 /home/pi/site/command.py play")
 
 
-button.when_pressed = clicked
-button.when_released = released
+
+btnNext.when_pressed = NextClicked
+btnPlayPause.when_pressed = PlayPauseClicked
+
 
 
 
@@ -79,7 +79,7 @@ while 1:
         if 'player' in locals():
             player.load(AUDIO_PATH + musiques[random.randint(0,len(musiques)-1)])
         else:
-            player = OMXPlayer(AUDIO_PATH + musiques[random.randint(0,len(musiques)-1)])
+            player = OMXPlayer(AUDIO_PATH + musiques[random.randint(0,len(musiques)-1)], args='-o local')
     
     elif buf[0] == 'prev':
         if 'player' in locals():
@@ -107,7 +107,7 @@ while 1:
         if 'player' in locals():
             player.load(AUDIO_PATH + buf[1])
         else:
-            player = OMXPlayer(AUDIO_PATH + buf[1])
+            player = OMXPlayer(AUDIO_PATH + buf[1], args='-o local')
         """try:
             player.quit()
         except:
