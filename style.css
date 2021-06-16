@@ -159,7 +159,14 @@ input[type="range"]::-ms-fill-upper {
 }
 
 
-
+/** CHROME*/
+input[type=range].custom-slider::-webkit-slider-runnable-track {
+	background-color: #172a69;/*zone de deplacement*/
+}
+input[type=range].custom-slider::-webkit-slider-thumb {
+	/*-webkit-appearance:slider-horizontal; */
+	background-color: #5AC5C2;/*curseur*/
+}
 
 
 
