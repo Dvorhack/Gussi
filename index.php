@@ -63,9 +63,22 @@ if(isset($_GET['time'])){
   	</head>
  
   	<body>
+	
 		<a href="list.php"><img src="Images/playlist.png" class="Retour"/></a>
+		<?php 	
+				$tuile=explode(".",$file);
+				if(file_exists('Pochettes/'.$tuile[0].'.jpg')){
+					echo '<img src="Pochettes/'.$tuile[0].'.jpg" alt="Bonjour à tous je suis l image" class="Image"/>'; 
+
+				}
+				else{
+					echo '<img src="Images/LogoTigre.png" alt="Bonjour à tous je suis l image" class="Image"/>' ;
+					}
+		?>
+		
+		
 		<br />
-		<img src="Images/LogoTigre.png" alt="Bonjour à tous je suis l'image" class="Image"/>
+		
 		<?php 
 		if(isset($file)){
 			
