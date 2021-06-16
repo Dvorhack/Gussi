@@ -38,7 +38,7 @@ if(isset($_GET['prev'])){
 }
 if(isset($_GET['vol'])){
 	$cmd = "python3 /home/pi/site/command.py 'vol " . $_GET['vol'] . "'";
-	$_SESSION['vol'] = $_GET['vol']*40;
+	$_SESSION['vol'] = $_GET['vol']*150;
 	//echo $cmd;
 	system($cmd);
 }
@@ -165,7 +165,7 @@ if(isset($_GET['time'])){
 		document.getElementById("VolSlide").addEventListener('touchend', function(){
 			var url = window.location.href.split("?")[0];    
 
-			url += '?vol=' + document.getElementById("VolSlide").value/40
+			url += '?vol=' + document.getElementById("VolSlide").value/150
 			
 			window.location.href = url;
 		});

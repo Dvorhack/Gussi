@@ -21,9 +21,9 @@ session_start();
 		<h1>Playlist</h1>
 		<br><br><br><br>
 		<form method="POST" action="upload.php" enctype="multipart/form-data">
-		 <input type="hidden" name="MAX_FILE_SIZE" value="100000">Fichier : <input type="file" name="avatar">
+		 <input type="hidden" name="MAX_FILE_SIZE" value="100000000">Fichier : <input type="file" name="avatar">
 		 <input type="submit" name="envoyer" value="Envoyer le fichier">
-</form>
+		</form>
 
 </form>
 	
