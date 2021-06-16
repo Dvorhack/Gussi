@@ -13,6 +13,7 @@ session_start();
 		<metacharset="utf-8">
 		<title>Gussi-Liste</title>
 		<link rel="stylesheet" type="text/css" href="list.css">
+		<link rel="stylesheet/less" type="text/css" href="styles.less" />
 		<meta name="viewport" content="width=device-width"/>
 	</head>
  
@@ -34,10 +35,26 @@ session_start();
 			
 				if(is_file($filename)){
 					$name = explode('.mp3',explode('/',$filename)[1])[0];
+					//$nameclean= explode('_',$name[1]);
 					?>
 					<div class="ListElt" onclick="changeTrack(<?php echo "'".$filename."'"; ?>)">
-						<img src="Images/LogoTigre.png"  class="Image2"/>
-						<p><?php echo $name; ?></br><?php echo "Durrée: ".shell_exec("mp3info -p '%S' $filename")." sec"; ?></p>
+					
+						<?php 
+							$phrase=preg_split("/(-|_)/",$name);
+							$string = "";
+							for ($i = 0; $i< sizeof($phrase) ; $i++){
+							$string.=$phrase[$i]." ";
+				
+			}
+							if(file_exists('Pochettes/'.$name.'.jpg')){
+								echo '<img src="Pochettes/'.$name.'.jpg"  class="Image2"/>'; 
+
+							}
+							else{
+								echo '<img src="Pochettes/defaut.jpg"  class="Image2"/>' ;
+							}
+							echo ' <div class="Testpochette"> '.$string.' </br> Durée: '.shell_exec("mp3info -p '%S' $filename").' sec </div>';
+						?>
 					</div>
 					<?php 
 			
@@ -56,6 +73,7 @@ session_start();
 			?>
 		</ul> 
   	</body>
+	
 	<script type="text/javascript">
 
 		function toMain(){
@@ -65,5 +83,7 @@ session_start();
 			document.location.href="index.php?track="+nomMusique;
 		}
 	</script>
+	
+	
  
 </html>

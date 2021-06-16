@@ -3,7 +3,10 @@ body{
 }
  
 
-
+ p{
+	 text-align:center;
+	 padding-left:20%;
+ }
 h1 {
  font-size: 175%; 
  color: black; 
@@ -25,10 +28,42 @@ h2 {
 	display: inline-block;
 	border-radius : 15%;
 	box-shadow: 0px 0px 10px #5AC5C2;
+	margin-left:25%;
+
 
 }
 
+.Image2:hover{
+	box-shadow: 0px 0px 25px #5AC5C2;
+	
+}
 
+.Image2:active{
+	box-shadow: 0px 0px 25px #319484;
+
+}
+.Testpochette{
+	text-align:center;
+}
+
+
+.ListElt{
+	display:flex;
+	flex-direction:column;
+	padding-top:10%;
+	justify-content:space-around;
+	
+	
+}
+
+
+#liste{
+	display:flex;
+	flex-direction:column;
+	border:none;
+	padding-right:3%;
+	justify-content:space-between;
+}
 
 ul.menutop {
   font-family: "Gill Sans", sans-serif;
@@ -69,23 +104,9 @@ li a:hover {
   color:white;
 }
 
-div{
-  border-style: solid;
-}
 
-#liste{
-  padding: 10px;
-}
 
-div.ListElt{
-  margin-bottom: 10px;;
-}
 
-div.ListElt p{
-  margin-left: 10px;
-  display: inline-block;
-  border-style: solid;
-}
 
 
 #upload{
